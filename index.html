@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News Aggregator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+    <style>{
+box-sizing: border-box;
+}body {
+margin: 0;
+padding: 0;
+font-family: 'Segoe UI', sans-serif;
+}
+
+nav {
+background-color: #ffffff;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+z-index: 9999;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav .container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 80px;
+}
+
+nav .logo h1 {
+font-size: 28px;
+font-weight: bold;
+color: #333333;
+}
+
+nav ul {
+display: flex;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+nav ul li {
+margin: 0 20px;
+}
+
+nav ul li a {
+color: #333333;
+font-size: 18px;
+text-decoration: none;
+transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+color: #007bff;
+}
+
+nav ul li.cta a {
+color: #ffffff;
+background-color: #007bff;
+padding: 12px 20px;
+border-radius: 5px;
+font-weight: bold;
+}
+
+nav ul li.cta a:hover {
+background-color: #0056b3;
+}
+
+nav .hamburger {
+display: none;
+flex-direction: column;
+justify-content: space-between;
+width: 30px;
+height: 20px;
+cursor: pointer;
+}
+
+nav .hamburger span {
+display: block;
+height: 2px;
+background-color: #333333;
+transition: transform 0.3s ease;
+}
+
+nav .hamburger.active span:first-of-type {
+transform: rotate(45deg) translate(5px, 5px);
+}
+
+nav .hamburger.active span:nth-of-type(2) {
+opacity: 0;
+}
+
+nav .hamburger.active span:last-of-type {
+transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media screen and (max-width: 768px) {
+nav .logo h1 {
+font-size: 24px;
+}
+nav ul {
+display: none;
+flex-direction: column;
+position: absolute;
+top: 80px;
+left: 0;
+right: 0;
+background-color: #ffffff;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+z-index: 9998;
+}
+nav ul li {
+margin: 0;
+width: 100%;
+}
+nav ul li a {
+display: block;
+padding: 12px 20px;
+border-bottom: 1px solid #f0f0f0;
+}
+nav .hamburger {
+display: flex;
+}
+}
+
+header {
+background-color: #007bff;
+color: #ffffff;
+text-align: center;
+padding: 100px 0;
+}
+
+header h1 {
+font-size: 48px;
+font-weight: bold;
+margin: 0;
+}
+
+.news-item {
+display: flex;
+margin-bottom: 30px;
+border-bottom: 1px solid #ccc;
+padding-bottom: 30px;
+}
+
+.news-item img {
+max-width: 200px;
+height: auto;
+margin-right: 20px;
+}
+
+.news-item h2 {
+font-size: 24px;
+margin: 0;
+line-height: 1.2;
+}
+
+.news-item p {
+font-size: 16px;
+margin: 10px 0 0 0;
+line-height: 1.5;
+}
+
+.news-item a {
+text-decoration: none;
+color: #000;
+}
+
+@media screen and (max-width: 768px) {
+.news-item {
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+.news-item img {
+margin-right: 0;
+margin-bottom: 20px;
+}
+}
+
+footer {
+background-color: #f0f0f0;
+color: #666666;
+text-align: center;
+padding: 20px 0;
+}
+
+footer p {
+font-size: 14px;
+margin: 0;
+}
+
+.container {
+max-width: 1000px;
+margin: 0 auto;
+padding: 0 20px;
+}
+
+main {
+padding: 50px 0;
+}
+
+@media screen and (max-width: 768px) {
+main {
+padding: 20px 0;
+}
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
+}
+
+.news-item {
+animation: fadeIn 0.5s ease-out;
+}
+
+nav .hamburger span {
+transform-origin: center;
+}
+
+nav .hamburger.active span:first-of-type {
+transform: rotate(45deg) translateY(5px);
+}
+
+nav .hamburger.active span:last-of-type {
+transform: rotate(-45deg) translateY(-5px);
+}
+
+nav .hamburger.active span:nth-of-type(2) {
+opacity: 0;
+}
+
+nav ul {
+animation: fadeIn 0.3s ease-out;
+}
+
+nav ul li {
+animation: fadeIn 0.5s ease-out;
+animation-delay: 0.1s;
+}
+
+nav ul li:nth-of-type(2) {
+animation-delay: 0.2s;
+}
+
+nav ul li:nth-of-type(3) {
+animation-delay: 0.3s;
+}
+
+nav ul li:nth-of-type(4) {
+animation-delay: 0.4s;
+}
+
+nav ul li.cta {
+animation: none;
+}
+
+nav ul li.cta a {
+background-color: #0056b3;
+}
+
+nav ul li.cta a:hover {
+background-color: #007bff;
+}
+    
+    </style>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">
+                <h1>News Aggregator</h1>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Categories</a></li>
+                <li><a href="#">Contact</a></li>
+                <li class="cta"><a href="#">Sign Up</a></li>
+                <li class="cta"><a href="#">Log In</a></li>
+            </ul>
+        </div>
+    </nav>
+    <header>
+        <div class="container">
+            <h1>Top Headlines</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <ul class="news-list"></ul>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 News Aggregator. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        const apiKey = '48d6e4cce72d4aa88c637510d0c506cf'; // Replace with your NewsAPI key
+        fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`)
+            .then(response => response.json())
+            .then(data => {
+                data.articles.forEach(article => {
+                    const li = document.createElement('li');
+                    li.classList.add('news-item');
+                    const img = document.createElement('img');
+                    img.src = article.urlToImage;
+                    const div = document.createElement('div');
+                    const h2 = document.createElement('h2');
+                    const a = document.createElement('a');
+                    a.href = article.url;
+                    a.textContent = article.title;
+                    const p = document.createElement('p');
+                    p.textContent = article.description;
+                    h2.appendChild(a);
+                    div.appendChild(h2);
+                    div.appendChild(p);
+                    li.appendChild(img);
+                    li.appendChild(div);
+                    document.querySelector('.news-list').appendChild(li);
+                });
+            })
+            .catch(error => console.error(error));
+    </script>
+</body>
+</html>
+
+
